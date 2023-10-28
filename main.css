@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.container{
+  font-family: arial, sans-serif;
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+#time {
+ font-size: 30px;
+  text-align: center;
+  padding: 1rem;
+  margin: .5rem;
+}
+
+#buttons {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#start, #stop, #reset {
+  font-size: 1.5rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 20px rgba(77, 78, 79, 0.25);
+}
