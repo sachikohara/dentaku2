@@ -1,25 +1,30 @@
 @charset "utf-8";
-
-.container{
-  font-family: arial, sans-serif;
-	max-width: 600px;
-	margin: 0 auto;
-	text-align: center;
+.wrapper{
+  max-width: 350px;
+  margin: 0 auto;
+  color: #666;
 }
-#time {
- font-size: 30px;
-  text-align: center;
-  padding: 1rem;
-  margin: .5rem;
+#header,#calc{
+ box-sizing: border-box;
+ text-align: center;
 }
-
-#buttons {
-  font-size: 3rem;
-  text-align: center;
+#header {
+ font-size: 24px;
+ padding: 1rem;
 }
-
-#start, #stop, #reset {
-  font-size: 1.5rem;
-  border-radius: .3rem;
-  box-shadow: 0 0 20px rgba(77, 78, 79, 0.25);
+input{
+ box-sizing: border-box;
+ width: 75%;
+ height: 3.5rem;
+ font-size: 1.6rem;
+ text-align: right;
+ padding: 0 0.75rem;
+}
+button{
+ font-size: 18px;
+ width: 25%;
+ height: 3.5rem;
+ color: #333;
+ vertical-align: middle;
+ border-color: #fff;
 }
