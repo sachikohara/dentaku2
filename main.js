@@ -4,16 +4,13 @@ let is_calc = false;
 window.onload = function () {
   result = document.getElementById('result');
 };
-
 function c_click(){
   result.value = "0";
   is_calc = false;
 }
-
 function num_click(val){
   if(is_calc)  result.value = "0";
   is_calc = false;  
-
   if(result.value =="0" && val == "0"){
     result.value = "0";
   }else if(result.value == "0" && val == "."){
@@ -23,6 +20,19 @@ function num_click(val){
   }else{
     result.value += val;
   }
+}
+function decimal(val) {
+  if(is_calc) is_calc = false;
+
+  if(is_decimal_last()) {
+    result.value = result.value.slice(0,-1) + val;
+  }
+  else {
+    result.value += val;
+  }
+}
+function is_decimal_last() {
+  return ["."].includes(result.value.toString().slice(-1));
 }
 
 function ope_click(val){
