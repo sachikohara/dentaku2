@@ -1,44 +1,53 @@
-const time = document.getElementById('time');
-const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
-const resetButton = document.getElementById('reset');
+let result = "";
+let is_calc = false;
 
-let startTime;
+window.onload = function () {
+  result = document.getElementById('result');
+};
 
-let stopTime = 0;
-let timeoutID;
-
-function displayTime() {
-  const currentTime = new Date(Date.now() - startTime + stopTime);
-  const h = String(currentTime.getUTCHours()).padStart(2, '0');
-  const m = String(currentTime.getUTCMinutes()).padStart(2, '0');
-  const s = String(currentTime.getUTCSeconds()).padStart(2, '0');
-  const ms = String(currentTime.getUTCMilliseconds()).padStart(3, '0');
-
-  time.textContent = `${h}:${m}:${s}.${ms}`;
-  timeoutID = setTimeout(displayTime, 10);
+function c_click(){
+  result.value = "0";
+  is_calc = false;
 }
 
-startButton.addEventListener('click', () => {
-  startButton.disabled = true;
-  stopButton.disabled = false;
-  resetButton.disabled = true;
-  startTime = Date.now();
-  displayTime();
-});
+function num_click(val){
+  if(is_calc)  result.value = "0";
+  is_calc = false;  
 
-stopButton.addEventListener('click', function() {
-  startButton.disabled = false;
-  stopButton.disabled = true;
-  resetButton.disabled = false;
-  clearTimeout(timeoutID);
-  stopTime += (Date.now() - startTime);
-});
+  if(result.value =="0" && val == "0"){
+    result.value = "0";
+  }else if(result.value == "0" && val == "."){
+    result.value = "0.";
+  }else if(result.value == "0"){
+    result.value = val;
+  }else{
+    result.value += val;
+  }
+}
 
-resetButton.addEventListener('click', function() {
-  startButton.disabled = false;
-  stopButton.disabled = true;
-  resetButton.disabled = true;
-  time.textContent = '00:00:00.000';
-  stopTime = 0;
-});
+function ope_click(val){
+  if(is_calc)  is_calc = false;
+  
+  if(is_ope_last()){
+    result.value = result.value.slice(0, -1) + val;
+  } else {
+    result.value += val;
+  }
+}
+console.log(43);
+
+function equal_click(){
+  if(is_ope_last())  result.value = result.value.slice(0, -1);
+
+  let temp = new Function("return " + result.value.replaceAll("×", "*").replaceAll("÷", "/"))();
+  if(temp == Infinity || Number.isNaN(temp)){
+    result.value = "Error";
+  }else{
+    result.value = temp;
+    is_calc = true;
+  }
+}
+
+function is_ope_last(){
+  return ["+","-","×","÷"].includes(result.value.toString().slice(-1));
+}
