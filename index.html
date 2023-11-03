@@ -4,21 +4,30 @@
 <meta charset="utf-8">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="main.css">
-<title>ストップウォッチ</title>
+<title>電卓</title>
 </head>
-
-
+ 
 <body>
-  <h3>ストップウォッチ️<h3>
-  <div id="container">
-    <div id="time">00:00:00.000</div>
-    
-    <div id="buttons">
-      <input id="start" type="button" value="start">
-      <input id="stop" type="button" value="stop">
-      <input id="reset" type="button" value="reset">
-    </div>
-  </div>  
-  <script src='main.js'></script>
+ <div class="wrapper">
+  <h3>電卓</h3>
+  <div class="calc">
+   <div>
+    <input readonly id="result" type="text" value="0"><button onclick="c_click()">C</button>
+   </div>
+   <div>
+    <button onclick="num_click(this.innerHTML)">7</button><button onclick="num_click(this.innerHTML)">8</button><button onclick="num_click(this.innerHTML)">9</button><button onclick="ope_click(this.innerHTML)">÷</button>
+   </div>
+   <div>
+    <button onclick="num_click(this.innerHTML)">4</button><button onclick="num_click(this.innerHTML)">5</button><button onclick="num_click(this.innerHTML)">6</button><button onclick="ope_click(this.innerHTML)">×</button>
+   </div>
+   <div>
+    <button onclick="num_click(this.innerHTML)">1</button><button onclick="num_click(this.innerHTML)">2</button><button onclick="num_click(this.innerHTML)">3</button><button onclick="ope_click(this.innerHTML)">-</button>
+   </div>
+   <div>
+    <button onclick="num_click(this.innerHTML)">0</button><button onclick="num_click(this.innerHTML)">.</button><button onclick="equal_click()">=</button><button onclick="ope_click(this.innerHTML)">+</button>
+   </div>
+  </div>
+</div>
+<script src="main.js"></script>
 </body>
 </html>
